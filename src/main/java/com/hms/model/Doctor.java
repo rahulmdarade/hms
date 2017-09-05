@@ -23,8 +23,8 @@ public class Doctor {
 		super();
 	}
 	
-	public Doctor(String name, String designation, String degree, int experience, String address, String emailId,
-			long contactNumber) {
+	public Doctor(String name, String designation, String degree, int experience, String address,
+			String emailId, long contactNumber) {
 		super();
 		this.name = name;
 		this.designation = designation;
@@ -34,6 +34,7 @@ public class Doctor {
 		this.emailId = emailId;
 		this.contactNumber = contactNumber;
 	}
+
 	public long getId() {
 		return id;
 	}

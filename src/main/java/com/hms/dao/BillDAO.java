@@ -1,9 +1,5 @@
 package com.hms.dao;
 
-import org.springframework.stereotype.Repository;
+public interface BillDao {
 
-@Repository
-public class BillDAO {
-
-	
 }

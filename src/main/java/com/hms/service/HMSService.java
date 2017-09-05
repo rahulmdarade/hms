@@ -6,9 +6,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.hms.dao.DoctorDAO;
-import com.hms.dao.InvoiceDAO;
-import com.hms.dao.PatientDAO;
+import com.hms.daoimp.DoctorDAOImp;
+import com.hms.daoimp.InvoiceDAOImp;
+import com.hms.daoimp.PatientDAOImp;
 import com.hms.model.Doctor;
 import com.hms.model.Invoice;
 import com.hms.model.Patient;
@@ -17,13 +17,13 @@ import com.hms.model.Patient;
 public class HMSService {
 	
 	@Autowired
-	DoctorDAO doctorDao;
+	DoctorDAOImp doctorDao;
 	
 	@Autowired
-	PatientDAO patientDao;
+	PatientDAOImp patientDao;
 	
 	@Autowired
-	InvoiceDAO invoiceDao;
+	InvoiceDAOImp invoiceDao;
 	
 	List<Doctor> listDoctors;
 	List<Patient> listPatients;
