@@ -2,11 +2,17 @@ package com.hms.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hms.model.Doctor;
@@ -29,33 +35,50 @@ public class HMSController {
 	
 	//Doctors
 	
-	@RequestMapping("/doctorInfo")
+	@RequestMapping("/doctors")
 	List<Doctor> showAllDoctors(){
 		List<Doctor> listAllDoctors= new ArrayList<>();
 		listAllDoctors=service.showAllDoctors();
 		return listAllDoctors;
 	}
 	
-	@RequestMapping("/doctorInfo/viewByName/{name}")
-	Doctor doctorViewByName(@PathVariable("name") String name ) {
+	@RequestMapping("/doctors/viewByName/{name}")
+	List<Map<String, Object>> doctorViewByName(@PathVariable("name") String name ) {
 		return service.searchDoctorByName(name);
+	}
+	
+	@RequestMapping("/doctors/viewById/{id}")
+	Doctor doctorViewById(@PathVariable("id") long id) {
+		return service.searchDoctorById(id);
+	}
+	
+	@RequestMapping(value="/doctors/addDoctor",method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseStatus(value = HttpStatus.OK)
+	void addDoctor(@RequestBody Doctor doctor) throws Exception{
+		service.createDoctor(doctor);
 	}
 	
 	//Patients
 	
-	@RequestMapping("/patientInfo")
+	@RequestMapping("/patients")
 	List<Patient> showAllPatients(){
 		List<Patient> listAllPatients= new ArrayList<Patient>();
 		listAllPatients=service.showAllPatients();
 		return listAllPatients;
 	}
 	
-	@RequestMapping("/patientInfo/viewByName/{name}")
-	Patient patientViewByName(@PathVariable("name") String name ) {
+	@RequestMapping("/patients/viewByName/{name}")
+	List<Map<String, Object>> patientViewByName(@PathVariable("name") String name ) {
 		return service.searchPatientByName(name);
 	}
 	
+	@RequestMapping("/patients/viewById/{id}")
+	Patient patientViewById(@PathVariable("id") long id) {
+		return service.searchPatientById(id);
+	}
+	
 	//Invoice 
+	
 	@RequestMapping("/invoice")
 	List<Invoice> showinvoice(){
 		return service.showInvoice();

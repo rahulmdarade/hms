@@ -1,29 +1,29 @@
-insert into Doctor(name,designation,degree,experience,address,email_id,contact_number) 
-values('Samaira', 'Pediatrician','MBBS', 6, 'Dadar', 'samaira@hospital.com', 8125963214)
-insert into Doctor(name,designation,degree,experience,address,email_id,contact_number) 
-values('John', 'Cardiologist', 'MD', 12, 'Andheri', 'john@hospital.com', 9856231475)
-insert into Doctor(name,designation,degree,experience,address,email_id,contact_number) 
-values('Peter', 'Gynecologist', 'MBBS', 3, 'Thane', 'peter@hospital.com', 9568142357)
-insert into Doctor(name,designation,degree,experience,address,email_id,contact_number) 
-values('Shuon', 'Neurologist', 'MBBS', 10, 'Vashi', 'shoun@hospital.com', 9786452315)
-insert into Doctor(name,designation,degree,experience,address,email_id,contact_number) 
-values('Reshma', 'Surgeon', 'MS', 7, 'Churchgate', 'reshma@hospital.com', 8759642154)
+insert into Doctor(address,contact_number,degree,designation,email_id,experience,name) 
+values('Dadar',8125963214,'MBBS','Pediatrician','samaira@hospital.com', 6,'Samaira');
+insert into Doctor(address,contact_number,degree,designation,email_id,experience,name) 
+values('Andheri', 9856231475,'MD','Cardiologist','john@hospital.com', 12, 'John');
+insert into Doctor(address,contact_number,degree,designation,email_id,experience,name) 
+values('Thane',9568142357, 'MBBS', 'Gynecologist','peter@hospital.com', 3, 'Peter');
+insert into Doctor(address,contact_number,degree,designation,email_id,experience,name) 
+values('Vashi',9786452315, 'MBBS', 'Neurologist', 'shoun@hospital.com',10, 'Shuon');
+insert into Doctor(address,contact_number,degree,designation,email_id,experience,name) 
+values('Churchgate', 8759642154,'MS','Surgeon', 'reshma@hospital.com',7, 'Reshma');
 
-insert into Patient(name,address,gender,disease,email_id,contact_number)
-values('Rahul','Vasai','Male','Fever','rahul@mail.com',8655312612)
-insert into Patient(name,address,gender,disease,email_id,contact_number)
-values('Neha','Kalyan','Female','Cold','neha@mail.com',9875641235)
-insert into Patient(name,address,gender,disease,email_id,contact_number)
-values('Nilesh','Thane','Male','Head Ache','nilesh@mail.com',9568425613)
-insert into Patient(name,address,gender,disease,email_id,contact_number)
-values('Kavita','Thane','Female','Malaria','kavita@mail.com',8659754868)
-insert into Patient(name,address,gender,disease,email_id,contact_number)
-values('Rajesh','Mahim','Male','Cold','rajesh@mail.com',9932541645)
-insert into Patient(name,address,gender,disease,email_id,contact_number)
-values('Atul','Kandivali','Male','Heart Problem','atul@mail.com',9915243686)
-insert into Patient(name,address,gender,disease,email_id,contact_number)
-values('Rutuja','Dombivali','Female','Dengue','rutuja@mail.com',9685741526)
-insert into Patient(name,address,gender,disease,email_id,contact_number)
-values('Megha','Thane','Female','Kidney Stone','megha@mail.com',9586742563)
-insert into Patient(name,address,gender,disease,email_id,contact_number)
-values('Sujay','Dombivali','Male','Cough','sujay@mail.com',9856785496)
+insert into Patient(address,contact_number,disease,email_id,gender,name)
+values('Vasai',8655312612,'Fever','rahul@mail.com','Male','Rahul');
+insert into Patient(address,contact_number,disease,email_id,gender,name)
+values('Kalyan',9875641235,'Cold','neha@mail.com','Female','Neha');
+insert into Patient(address,contact_number,disease,email_id,gender,name)
+values('Thane',9568425613,'Head Ache','nilesh@mail.com','Male','Nilesh');
+insert into Patient(address,contact_number,disease,email_id,gender,name)
+values('Thane',8659754868,'Malaria','kavita@mail.com','Female','Kavita');
+insert into Patient(address,contact_number,disease,email_id,gender,name)
+values('Mahim',9932541645,'Cold','rajesh@mail.com','Male','Rajesh');
+insert into Patient(address,contact_number,disease,email_id,gender,name)
+values('Kandivali',9915243686,'Heart Problem','atul@mail.com','Male','Atul');
+insert into Patient(address,contact_number,disease,email_id,gender,name)
+values('Dombivali',9685741526,'Dengue','rutuja@mail.com','Female','Rutuja');
+insert into Patient(address,contact_number,disease,email_id,gender,name)
+values('Thane',9586742563,'Kidney Stone','megha@mail.com','Female','Megha');
+insert into Patient(address,contact_number,disease,email_id,gender,name)
+values('Dombivali',9856785496,'Cough','sujay@mail.com','Male','Sujay');

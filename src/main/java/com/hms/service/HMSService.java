@@ -2,13 +2,14 @@ package com.hms.service;
 
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.hms.daoimp.DoctorDAOImp;
-import com.hms.daoimp.InvoiceDAOImp;
-import com.hms.daoimp.PatientDAOImp;
+import com.hms.dao.impl.DoctorDAOImpl;
+import com.hms.dao.impl.InvoiceDAOImpl;
+import com.hms.dao.impl.PatientDAOImpl;
 import com.hms.model.Doctor;
 import com.hms.model.Invoice;
 import com.hms.model.Patient;
@@ -17,13 +18,13 @@ import com.hms.model.Patient;
 public class HMSService {
 	
 	@Autowired
-	DoctorDAOImp doctorDao;
+	DoctorDAOImpl doctorDao;
 	
 	@Autowired
-	PatientDAOImp patientDao;
+	PatientDAOImpl patientDao;
 	
 	@Autowired
-	InvoiceDAOImp invoiceDao;
+	InvoiceDAOImpl invoiceDao;
 	
 	List<Doctor> listDoctors;
 	List<Patient> listPatients;
@@ -36,16 +37,18 @@ public class HMSService {
 		return listDoctors;
 	}
 
-	public Doctor searchDoctorByName(String doctorName){
-		listDoctors=doctorDao.allDoctors();
-		for(Doctor d: listDoctors){
-			if(d.getName().equals(doctorName)){
-				return d;
-			}
-		}
-		return null;
+	public List<Map<String, Object>> searchDoctorByName(String doctorName){
+		return doctorDao.searchDoctorByName(doctorName);
 	}
 	
+	public Doctor searchDoctorById(long id) {	
+		return doctorDao.searchDoctorById(id);
+	}
+	
+	public Doctor createDoctor(Doctor doctor) {
+		return doctorDao.createDoctor(doctor);
+		
+	}
 	//Patients
 	
 	public List<Patient> showAllPatients(){
@@ -53,21 +56,17 @@ public class HMSService {
 		return listPatients;
 	}
 	
-	public Patient searchPatientByName(String patientName){
-		listPatients=patientDao.allPatients();
-		for(Patient p: listPatients){
-			if(p.getName().equals(patientName)){
-				return p;
-			}
-		}
-		return null;
+	public List<Map<String, Object>> searchPatientByName(String patientName){
+		return patientDao.searchPatientByName(patientName);
 	}
 	
+	public Patient searchPatientById(long id) {
+		return patientDao.searchPatientById(id);
+	}
 	// Invoice 
 	
 	public List<Invoice> showInvoice(){
 		invoiceList=invoiceDao.showInvoice();
 		return invoiceList;
 	}
-	
 }

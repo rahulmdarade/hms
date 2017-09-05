@@ -1,9 +1,9 @@
-package com.hms.daoimp;
+package com.hms.dao.impl;
 
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class BillDAOImp {
+public class BillDAOImpl {
 
 	
 }
