@@ -1,5 +1,6 @@
 package com.hms.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,6 +11,7 @@ public class Doctor {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name="Doctor_id")
 	private long id;
 	private String name;
 	private String designation;
@@ -21,18 +23,6 @@ public class Doctor {
 
 	public Doctor() {
 		super();
-	}
-	
-	public Doctor(String name, String designation, String degree, int experience, String address,
-			String emailId, long contactNumber) {
-		super();
-		this.name = name;
-		this.designation = designation;
-		this.degree = degree;
-		this.experience = experience;
-		this.address = address;
-		this.emailId = emailId;
-		this.contactNumber = contactNumber;
 	}
 
 	public long getId() {

@@ -35,23 +35,36 @@ public class DoctorDAOImpl implements DoctorDao {
 				.addValue("address", doctor.getAddress())
 				.addValue("contact_number", doctor.getContactNumber())
 				.addValue("degree", doctor.getDegree())
-				.addValue("destination", doctor.getDesignation())
+				.addValue("designation", doctor.getDesignation())
 				.addValue("email_id", doctor.getEmailId())
 				.addValue("experience", doctor.getExperience())
 				.addValue("name", doctor.getName());
 		namedParameterJdbcTemplate.update(Doctor_Constant.INSERT_SQL, parameters, holder);
-		doctor.setId(holder.getKey().intValue());
+		doctor.setId(holder.getKey().longValue());
 		return doctor;
 	}
 
 	@Override
-	public void updateDoctor() {
-		
+	public Doctor updateDoctor(Doctor doctor) {
+		KeyHolder holder=new GeneratedKeyHolder();
+		SqlParameterSource parameter=new MapSqlParameterSource()
+				.addValue("id", doctor.getId())
+				.addValue("address",doctor.getAddress() )
+				.addValue("contact_number", doctor.getContactNumber())
+				.addValue("degree", doctor.getDegree())
+				.addValue("designation",doctor.getDesignation())
+				.addValue("email_id",doctor.getEmailId())
+				.addValue("experience",doctor.getExperience())
+				.addValue("name", doctor.getName());
+		namedParameterJdbcTemplate.update(Doctor_Constant.UPDATE_SQL, parameter, holder);
+		return doctor;
 	}
 
 	@Override
-	public void deleteDoctor() {
-		
+	public void deleteDoctor(long id) {
+		Map<String, Long> parameter = new HashMap<>();
+		parameter.put("id", id);
+		namedParameterJdbcTemplate.update(Doctor_Constant.DELETE_SQL, parameter);
 	}
 	
 //	public void printDoctors(List<Doctor> listDoctors){

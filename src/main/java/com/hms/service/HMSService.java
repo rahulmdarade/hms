@@ -47,7 +47,14 @@ public class HMSService {
 	
 	public Doctor createDoctor(Doctor doctor) {
 		return doctorDao.createDoctor(doctor);
-		
+	}
+	
+	public Doctor updateDoctor(Doctor doctor) {
+		return doctorDao.updateDoctor(doctor);
+	}
+	
+	public void deleteDoctor(long id){
+		doctorDao.deleteDoctor(id);
 	}
 	//Patients
 	
@@ -63,10 +70,25 @@ public class HMSService {
 	public Patient searchPatientById(long id) {
 		return patientDao.searchPatientById(id);
 	}
+	
+	public Patient createPatient(Patient patient) {
+		return patientDao.createPatient(patient);
+	}
+	
+	public void updatePatient(Patient patient){
+		patientDao.updatePatient(patient);
+	}
+	
+	public void deletePatient(long id){
+		patientDao.deletePatient(id);
+	}
+	
 	// Invoice 
 	
 	public List<Invoice> showInvoice(){
 		invoiceList=invoiceDao.showInvoice();
 		return invoiceList;
 	}
+
+	
 }

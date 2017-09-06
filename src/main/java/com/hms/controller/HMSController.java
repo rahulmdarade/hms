@@ -7,7 +7,6 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,7 +21,6 @@ import com.hms.service.HMSService;
 
 @RestController
 @RequestMapping("/hms")
-@CrossOrigin("localhost:8080")
 public class HMSController {
 	
 	@Autowired
@@ -58,6 +56,18 @@ public class HMSController {
 		service.createDoctor(doctor);
 	}
 	
+	@RequestMapping(value="/doctors/updateDoctor/{id}",method=RequestMethod.PUT,consumes=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseStatus(value=HttpStatus.OK)
+	void updateDoctor(@PathVariable("id") long id, @RequestBody Doctor doctor) throws Exception{
+		doctor.setId(id);
+		service.updateDoctor(doctor);
+	}
+	
+	@RequestMapping(value="/doctors/deleteDoctor/{id}",method=RequestMethod.DELETE)
+	@ResponseStatus(value=HttpStatus.OK)
+	void deleteDoctor(@PathVariable("id") long id)throws Exception{
+		service.deleteDoctor(id);
+	}
 	//Patients
 	
 	@RequestMapping("/patients")
@@ -77,6 +87,24 @@ public class HMSController {
 		return service.searchPatientById(id);
 	}
 	
+	@RequestMapping(value="/patients/addPatient",method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseStatus(value = HttpStatus.OK)
+	void addPatient(@RequestBody Patient patient) throws Exception{
+		service.createPatient(patient);
+	}
+	
+	@RequestMapping(value="/patients/updatePatient/{id}",method=RequestMethod.PUT,consumes=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseStatus(value=HttpStatus.OK)
+	void updatePatient(@PathVariable("id") long id, @RequestBody Patient patient) throws Exception{
+		patient.setId(id);
+		service.updatePatient(patient);
+	}
+	
+	@RequestMapping(value="/patients/deletePatient/{id}",method=RequestMethod.DELETE)
+	@ResponseStatus(value=HttpStatus.OK)
+	void deletePatient(@PathVariable("id") long id)throws Exception{
+		service.deletePatient(id);
+	}
 	//Invoice 
 	
 	@RequestMapping("/invoice")
