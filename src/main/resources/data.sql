@@ -1,3 +1,6 @@
+insert into Hospital(address,contact_number,name,website)
+values('Dadar',9568745896,'City Care Hospital','info@citycarehospital.com');
+
 insert into Doctor(address,contact_number,degree,designation,email_id,experience,name) 
 values('Dadar',8125963214,'MBBS','Pediatrician','samaira@hospital.com', 6,'Samaira');
 insert into Doctor(address,contact_number,degree,designation,email_id,experience,name) 

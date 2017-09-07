@@ -8,9 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hms.dao.impl.DoctorDAOImpl;
+import com.hms.dao.impl.HospitalDAOImpl;
 import com.hms.dao.impl.InvoiceDAOImpl;
 import com.hms.dao.impl.PatientDAOImpl;
 import com.hms.model.Doctor;
+import com.hms.model.Hospital;
 import com.hms.model.Invoice;
 import com.hms.model.Patient;
 
@@ -26,9 +28,18 @@ public class HMSService {
 	@Autowired
 	InvoiceDAOImpl invoiceDao;
 	
+	@Autowired
+	HospitalDAOImpl hospitalDao;
+	
 	List<Doctor> listDoctors;
 	List<Patient> listPatients;
 	List<Invoice> invoiceList;
+	
+	//hospital
+	
+	public List<Hospital> getHospital() {
+		return hospitalDao.getHospital();
+	}
 	
 	//Doctor
 	
@@ -90,5 +101,4 @@ public class HMSService {
 		return invoiceList;
 	}
 
-	
 }

@@ -1,5 +1,6 @@
 package com.hms.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,6 +10,7 @@ import javax.persistence.Id;
 public class Bill {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name="Bill_id")
 	private long id;
 	private String particular;
 	private int quantity;

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hms.model.Doctor;
+import com.hms.model.Hospital;
 import com.hms.model.Invoice;
 import com.hms.model.Patient;
 import com.hms.service.HMSService;
@@ -29,6 +30,13 @@ public class HMSController {
 	@RequestMapping("/")
 	String home() {
 		return "<h1>Welcome to Hospital Management System</h1>";
+	}
+	
+	//Hospital
+	
+	@RequestMapping("/hospital")
+	List<Hospital> getHospital(){
+		return service.getHospital();
 	}
 	
 	//Doctors
