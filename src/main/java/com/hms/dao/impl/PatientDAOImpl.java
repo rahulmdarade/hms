@@ -23,9 +23,11 @@ public class PatientDAOImpl implements PatientDao {
 	@Autowired
 	NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 	
+	@Autowired
+	PatientRowMapper patientRowMapper;
 	@Override
 	public List<Patient> allPatients() {
-		return namedParameterJdbcTemplate.query(Patient_Constant.FETCH_SQL, new PatientRowMapper());
+		return namedParameterJdbcTemplate.query(Patient_Constant.FETCH_SQL, patientRowMapper);
 	}
 	
 //	(address,contact_number,disease,email_id,gender,name)
@@ -39,8 +41,8 @@ public class PatientDAOImpl implements PatientDao {
 				.addValue("disease", patient.getDisease())
 				.addValue("email_id",patient.getEmailId())
 				.addValue("gender",patient.getGender())
-				.addValue("name", patient.getName());
-//				.addValue("doctor", patient.getDoctor());
+				.addValue("name", patient.getName())
+				.addValue("doctor", patient.getDoctor().getId());
 		namedParameterJdbcTemplate.update(Patient_Constant.INSERT_SQL, parameter, holder);
 		patient.setId(holder.getKey().longValue());
 		return patient;
@@ -56,7 +58,8 @@ public class PatientDAOImpl implements PatientDao {
 				.addValue("disease", patient.getDisease())
 				.addValue("email_id", patient.getEmailId())
 				.addValue("gender",patient.getGender())
-				.addValue("name", patient.getName());
+				.addValue("name", patient.getName())
+				.addValue("doctor", patient.getDoctor().getId());
 		namedParameterJdbcTemplate.update(Patient_Constant.UPDATE_SQL, parameter, holder);		
 	}
 
@@ -76,6 +79,6 @@ public class PatientDAOImpl implements PatientDao {
 	public Patient searchPatientById(long id) {
 		Map<String, Long> parameter = new HashMap<>();
 		parameter.put("id", id);
-		return namedParameterJdbcTemplate.queryForObject(Patient_Constant.FETCH_SQL_BY_ID, parameter,new PatientRowMapper());
+		return namedParameterJdbcTemplate.queryForObject(Patient_Constant.FETCH_SQL_BY_ID, parameter,patientRowMapper);
 	}
 }

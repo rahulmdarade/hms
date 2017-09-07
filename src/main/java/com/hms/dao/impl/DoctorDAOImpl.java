@@ -23,9 +23,12 @@ public class DoctorDAOImpl implements DoctorDao {
 	@Autowired
 	NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
+	@Autowired
+	DoctorRowMapper doctorRowMapper;
+	
 	@Override
 	public List<Doctor> allDoctors(){
-		return namedParameterJdbcTemplate.query(Doctor_Constant.FETCH_SQL, new DoctorRowMapper());
+		return namedParameterJdbcTemplate.query(Doctor_Constant.FETCH_SQL,doctorRowMapper);
 	}
 
 	@Override
@@ -67,10 +70,6 @@ public class DoctorDAOImpl implements DoctorDao {
 		namedParameterJdbcTemplate.update(Doctor_Constant.DELETE_SQL, parameter);
 	}
 	
-//	public void printDoctors(List<Doctor> listDoctors){
-//		for(Doctor d : listDoctors) 
-//			System.out.println(d);
-//	}
 	@Override
 	public List<Map<String, Object>> searchDoctorByName(String name){
 		Map<String, String> parameter = new HashMap<>();
@@ -81,6 +80,6 @@ public class DoctorDAOImpl implements DoctorDao {
 	public Doctor searchDoctorById(long id) {
 		Map<String, Long> parameter = new HashMap<>();
 		parameter.put("id", id);
-		return namedParameterJdbcTemplate.queryForObject(Doctor_Constant.FETCH_SQL_BY_ID, parameter,new DoctorRowMapper());
+		return namedParameterJdbcTemplate.queryForObject(Doctor_Constant.FETCH_SQL_BY_ID, parameter,doctorRowMapper);
 	}
 }

@@ -22,10 +22,10 @@ public class Patient {
 	private String disease;
 	private String emailId;
 	private long contactNumber;
-//	
-//	@OneToOne
-//	@JoinColumn(foreignKey=@ForeignKey(name="Doctor_id"))
-//	private Doctor doctor;
+	
+	@OneToOne
+	@JoinColumn(foreignKey=@ForeignKey(name="Doctor_id"))
+	private Doctor doctor;
 	
 	public Patient() {
 		super();
@@ -74,16 +74,16 @@ public class Patient {
 	public void setContactNumber(long contactNumber) {
 		this.contactNumber = contactNumber;
 	}
-	
-//	public Doctor getDoctor() {
-//		return doctor;
-//	}
-//	public void setDoctor(Doctor doctor) {
-//		this.doctor = doctor;
-//	}
+	public Doctor getDoctor() {
+		return doctor;
+	}
+	public void setDoctor(Doctor doctor) {
+		this.doctor = doctor;
+	}
 	@Override
 	public String toString() {
 		return "Patient [id=" + id + ", name=" + name + ", address=" + address + ", gender=" + gender + ", disease="
-				+ disease + ", emailId=" + emailId + ", contactNumber=" + contactNumber + "]";
+				+ disease + ", emailId=" + emailId + ", contactNumber=" + contactNumber + ", doctor=" + doctor.getId()
+				+ "]";
 	}	
 }

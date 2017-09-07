@@ -4,9 +4,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Component;
 
 import com.hms.model.Doctor;
-
+@Component
 public class DoctorRowMapper implements RowMapper<Doctor> {
 
 	@Override
